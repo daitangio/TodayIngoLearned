@@ -8,14 +8,21 @@ import { ensureLoggedIn } from 'connect-ensure-login';
  */
 
 import { getDBPath, getListeningPort, getExpresssessionsecret,getSecurecoockies } from './config';
-
+import path from "path";
+// import * as routes from "./routes";
 
 const app = express();
 
-
 // Configure view engine to render EJS templates.
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+app.use(express.json());
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+app.use(express.static(path.join(__dirname, "public")));
+
+/*
+// app.set('views', __dirname + '/views');
+// app.set('view engine', 'ejs');
 
 // Trust the proxy
 app.set('trust proxy', 1)
@@ -48,6 +55,7 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+*/
 
 app.get('/', 
     ensureLoggedIn(),

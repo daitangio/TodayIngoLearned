@@ -8,5 +8,7 @@
       "sourceMap": true,
       "outDir": "dist"
     },
+    "include": ["src/**/*"],
+    "exclude": [ "src/public" ],
     "lib": ["es2015"]
   }
